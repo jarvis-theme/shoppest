@@ -60,13 +60,7 @@ return array(
         'testimonial'=>4,    
     ),
     'banner' => true,
-    'themesColor' => array(
-        'type'=> 'false', 
-        'warnaDef'=>'background:#d8d8d8;main-color:#f5640c;',
-        'color'=>false
-        ),
     'layout' => array(
         'index1'=>'Layout dengan sidebar'
-        ),
-
+    ),
 );

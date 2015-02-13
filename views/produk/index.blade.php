@@ -89,16 +89,16 @@
 								<div class="thumbSetting">
 									<div class="thumbTitle">
 										<h3>
-										<a href="{{slugProduk($myproduk)}}" class="invarseColor">{{$myproduk->nama}}</a>
-										@if(is_terlaris($myproduk))
-										   <span class="label label-success">Sale</span>
-										@endif
-										@if(is_produkbaru($myproduk))
-										   <span class="label label-success">Baru</span>
-										@endif
-										@if(is_outstok($myproduk))
+											<a href="{{slugProduk($myproduk)}}" class="invarseColor">{{$myproduk->nama}}</a>
+											@if(is_terlaris($myproduk))
+											<span class="label label-success">Terlaris</span>
+											@endif
+											@if(is_produkbaru($myproduk))
+											<span class="label label-success">Baru</span>
+											@endif
+											@if(is_outstok($myproduk))
 											<span class="label label-success">Kosong</span>
-										@endif
+											@endif
 										</h3>
 									</div>
 									<div class="product-desc">
@@ -107,7 +107,12 @@
 										</p>
 									</div>
 									<div class="thumbPrice">
-										<span><span class="strike-through">{{jadiRupiah($myproduk->hargaCoret, false)}}</span>{{jadiRupiah($myproduk->hargaJual)}}</span>
+										<span>
+											@if($myproduk->hargaCoret != 0)
+											<span class="strike-through">{{jadiRupiah($myproduk->hargaCoret)}}</span>
+											@endif
+											{{jadiRupiah($myproduk->hargaJual)}}
+										</span>
 									</div>
 
 									<div class="thumbButtons">
@@ -132,22 +137,27 @@
 											<h3>
 												<a href="{{slugProduk($myproduk)}}" class="invarseColor">{{$myproduk->nama}}</a>
 												@if(is_terlaris($myproduk))
-												   <span class="label label-success">Sale</span>
+												<span class="label label-success">Terlaris</span>
 												@endif
 												@if(is_produkbaru($myproduk))
-												   <span class="label label-success">Baru</span>
+												<span class="label label-success">Baru</span>
 												@endif
 												@if(is_outstok($myproduk))
-													<span class="label label-success">Kosong</span>
+												<span class="label label-success">Kosong</span>
 												@endif
 											</h3>
 										</div>
-										<div class="thumbPrice clearfix">
-											<span><span class="strike-through">{{jadiRupiah($myproduk->hargaCoret, false)}}</span> &nbsp;{{jadiRupiah($myproduk->hargaJual)}}</span>
+										<div class="thumbPrice-list clearfix">
+											<span>
+												@if($myproduk->hargaCoret != 0)
+												<span class="strike-through">{{jadiRupiah($myproduk->hargaCoret)}}</span>
+												@endif
+												&nbsp;{{jadiRupiah($myproduk->hargaJual)}}
+											</span>
 										</div>
 										<div class="thumbDesc">
 											<p>
-												{{shortDescription($myproduk->deskripsi,100)}}[ <a href="{{slugProduk($myproduk)}}" data-title="Read More" data-tip="tooltip" data-placement="top">...</a> ]
+												{{shortDescription($myproduk->deskripsi,100)}}
 											</p>
 										</div>
 

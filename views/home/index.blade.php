@@ -37,13 +37,6 @@
                                             @endif
                                             </h3>
                                         </div>
-                                        <!-- <ul class="rating clearfix">
-                                            <li><i class="star-on"></i></li>
-                                            <li><i class="star-on"></i></li>
-                                            <li><i class="star-on"></i></li>
-                                            <li><i class="star-on"></i></li>
-                                            <li><i class="star-off"></i></li>
-                                        </ul> -->
                                         <div class="product-desc">
                                             <p>
                                                {{shortDescription($myproduk->deskripsi,100)}}
@@ -51,7 +44,10 @@
                                         </div>
                                         @if($setting->checkoutType==1)
                                             <div class="thumbPrice">
-                                                <span><span class="strike-through">{{jadiRupiah($myproduk->hargaCoret,false)}}</span>{{jadiRupiah($myproduk->hargaJual,$matauang)}}</span>
+                                            @if($myproduk->hargaCoret != 0)
+                                                <span class="strike-through">{{jadiRupiah($myproduk->hargaCoret)}}</span>
+                                            @endif
+                                                <span>{{jadiRupiah($myproduk->hargaJual,$matauang)}}</span>
                                             </div>
                                         @endif
                                         <div class="thumbButtons">
@@ -92,7 +88,9 @@
                                 @foreach($produk as $key=>$myproduk)
                                 <li class="span3 clearfix">
                                     <div class="thumbnail">
-                                        <a href=""><img src="{{URL::to(getPrefixDomain().'/produk/'.$myproduk->gambar1)}}" alt=""></a>
+                                        <a href="{{slugProduk($myproduk)}}">
+                                            <img src="{{URL::to(getPrefixDomain().'/produk/'.$myproduk->gambar1)}}">
+                                        </a>
                                     </div>
                                     <div class="thumbSetting">
                                         <div class="thumbTitle">
@@ -109,21 +107,15 @@
                                             @endif
                                             </h3>
                                         </div>
-                                        <!-- <ul class="rating clearfix">
-                                            <li><i class="star-on"></i></li>
-                                            <li><i class="star-on"></i></li>
-                                            <li><i class="star-on"></i></li>
-                                            <li><i class="star-on"></i></li>
-                                            <li><i class="star-off"></i></li>
-                                        </ul> -->
                                         <div class="product-desc">
-                                            <p>
-                                               {{shortDescription($myproduk->deskripsi,100)}}
-                                            </p>
+                                            <p>{{shortDescription($myproduk->deskripsi,100)}}</p>
                                         </div>
                                         @if($setting->checkoutType==1)
                                             <div class="thumbPrice">
-                                                <span><span class="strike-through">{{jadiRupiah($myproduk->hargaCoret,false)}}</span>{{jadiRupiah($myproduk->hargaJual,$matauang)}}</span>
+                                            @if($myproduk->hargaCoret != 0)
+                                                <span class="strike-through">{{jadiRupiah($myproduk->hargaCoret)}}</span>
+                                            @endif
+                                                <span>{{jadiRupiah($myproduk->hargaJual,$matauang)}}</span>
                                             </div>
                                         @endif
                                         <div class="thumbButtons">
@@ -140,4 +132,3 @@
                     </div><!--end featuredItems-->
                 </div><!--end span12-->
             </div><!--end row-->
-
