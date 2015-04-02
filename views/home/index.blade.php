@@ -20,12 +20,14 @@
                                 @foreach($newproduk as $key=>$myproduk)
                                 <li class="span3 clearfix">
                                     <div class="thumbnail">
-                                        <a href="{{slugProduk($myproduk)}}"><img src="{{URL::to(getPrefixDomain().'/produk/'.$myproduk->gambar1)}}" alt=""></a>
+                                        <a href="{{product_url($myproduk)}}">
+                                            {{HTML::image(product_image_url($myproduk->gambar1))}}
+                                        </a>
                                     </div>
                                     <div class="thumbSetting">
                                         <div class="thumbTitle">
                                             <h3>
-                                            <a href="{{slugProduk($myproduk)}}" class="invarseColor">{{$myproduk->nama}}</a>
+                                            <a href="{{product_url($myproduk)}}" class="invarseColor">{{shortDescription($myproduk->nama, 15)}}</a>
                                             @if(is_terlaris($myproduk))
                                                <span class="label label-success">Sale</span>
                                             @endif
@@ -45,9 +47,14 @@
                                         @if($setting->checkoutType==1)
                                             <div class="thumbPrice">
                                             @if($myproduk->hargaCoret != 0)
-                                                <span class="strike-through">{{jadiRupiah($myproduk->hargaCoret)}}</span>
+                                                <span>
+                                                    <span class="strike-through">{{jadiRupiah($myproduk->hargaCoret)}}</span>
+                                                    <br>
+                                                    {{jadiRupiah($myproduk->hargaJual,$matauang)}}
+                                                </span>
+                                            @else
+                                                <span style="line-height:45px">{{jadiRupiah($myproduk->hargaJual,$matauang)}}</span>
                                             @endif
-                                                <span>{{jadiRupiah($myproduk->hargaJual,$matauang)}}</span>
                                             </div>
                                         @endif
                                         <div class="thumbButtons">
@@ -80,7 +87,6 @@
                                 </div><!--end btn-toolbar-->
                             </div><!--end pagers-->
                         </div><!--end titleHeader-->
-                        
 
                         <div class="row">
                             <ul class="hProductItems clearfix" id="cycleFeatured">
@@ -88,14 +94,14 @@
                                 @foreach($produk as $key=>$myproduk)
                                 <li class="span3 clearfix">
                                     <div class="thumbnail">
-                                        <a href="{{slugProduk($myproduk)}}">
-                                            <img src="{{URL::to(getPrefixDomain().'/produk/'.$myproduk->gambar1)}}">
+                                        <a href="{{product_url($myproduk)}}">
+                                            {{HTML::image(product_image_url($myproduk->gambar1))}}
                                         </a>
                                     </div>
                                     <div class="thumbSetting">
                                         <div class="thumbTitle">
                                             <h3>
-                                            <a href="{{slugProduk($myproduk)}}" class="invarseColor">{{$myproduk->nama}}</a>
+                                            <a href="{{product_url($myproduk)}}" class="invarseColor">{{shortDescription($myproduk->nama,15)}}</a>
                                             @if(is_terlaris($myproduk))
                                                <span class="label label-success">Sale</span>
                                             @endif
@@ -113,9 +119,14 @@
                                         @if($setting->checkoutType==1)
                                             <div class="thumbPrice">
                                             @if($myproduk->hargaCoret != 0)
-                                                <span class="strike-through">{{jadiRupiah($myproduk->hargaCoret)}}</span>
+                                                <span>
+                                                    <span class="strike-through">{{jadiRupiah($myproduk->hargaCoret)}}</span>
+                                                    <br>
+                                                    {{jadiRupiah($myproduk->hargaJual,$matauang)}}
+                                                </span>
+                                            @else
+                                                <span style="line-height:45px">{{jadiRupiah($myproduk->hargaJual,$matauang)}}</span>
                                             @endif
-                                                <span>{{jadiRupiah($myproduk->hargaJual,$matauang)}}</span>
                                             </div>
                                         @endif
                                         <div class="thumbButtons">

@@ -1,20 +1,20 @@
-	@if(Session::has('error'))
-		<div class="error" id='message' style='display:none'>							
-			{{Session::get('error')}}
-		</div>
-	@endif
-	@if(Session::has('success'))
-		<div class="success" id='message' style='display:none'>
-			<p>Selamat, anda sudah berhasil register. Silakan check email untuk mengetahui informasi akun anda.</p>					
-		</div>
-	@endif
-	@if(Session::has('errorrecovery'))
-		<div class="error" id='message' style='display:none'>
-			<p>Maaf, email anda tidak ditemukan.</p>					
-		</div>
-	@endif	
+  @if(Session::has('error'))
+    <div class="error" id='message' style='display:none'>             
+      {{Session::get('error')}}
+    </div>
+  @endif
+  @if(Session::has('success'))
+    <div class="success" id='message' style='display:none'>
+      <p>Selamat, anda sudah berhasil register. Silakan check email untuk mengetahui informasi akun anda.</p>         
+    </div>
+  @endif
+  @if(Session::has('errorrecovery'))
+    <div class="error" id='message' style='display:none'>
+      <p>Maaf, email anda tidak ditemukan.</p>          
+    </div>
+  @endif  
 
-	<div class="content-wrap">
+  <div class="content-wrap">
 <div style="clear:both; display:block; height:20px"></div>
 <div class="container-2">
     <section class="content">
@@ -50,8 +50,12 @@
     <aside class="sidebar">
         <div class="side">
             <h4>Banner</h4>
-          @foreach(getBanner(1) as $item)
-              <div><a href="{{URL::to($item->url)}}"><img src="{{URL::to(getPrefixDomain().'/galeri/'.$item->gambar)}}" /></a></div>
+          @foreach(vertical_banner() as $item)
+              <div>
+                <a href="{{URL::to($item->url)}}">
+                  {{HTML::image(banner_image_url($item->gambar))}}
+                </a>
+              </div>
           @endforeach
         </div><!--end:side-->
         <!-- <div class="side">

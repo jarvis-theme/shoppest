@@ -50,7 +50,7 @@
             </div><!--end pull-right-->
 
             <ul class="pull-right inline">
-                @if ( ! Sentry::check())
+                @if ( ! is_login() )
                     <li><a class="invarseColor" href="{{URL::to('member')}}">Login</a></li>
                     <li class="sep-vertical"></li>
                     <li><a class="invarseColor" href="{{URL::to('member/create')}}">Register</a></li>
@@ -65,7 +65,7 @@
                 <li class="sep-vertical"></li>
                 <li><a class="invarseColor" href="{{URL::to('checkout')}}">Checkout</a></li>
                 
-                 @if (Sentry::check())
+                @if (is_login())
                     <li class="sep-vertical"></li>
                     <li><a class="invarseColor" href="{{URL::to('logout')}}" >Logout</a></li>
                 @endif

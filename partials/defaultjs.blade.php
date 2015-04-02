@@ -1,11 +1,13 @@
 <!-- Default js -->
-{{HTML::script(dirTemaToko().'shoppest/assets/js/jquery-1.9.1.min.js')}}
-{{HTML::script(dirTemaToko().'shoppest/assets/js/jquery-ui-1.10.2.min.js')}}
-{{HTML::script(dirTemaToko().'shoppest/assets/js/bootstrap.min.js')}}
-{{HTML::script(dirTemaToko().'shoppest/assets/js/jquery.cookie.js')}}
-{{HTML::script(dirTemaToko().'shoppest/assets/js/fancybox/jquery.fancybox.js')}}
-{{HTML::script(dirTemaToko().'shoppest/assets/js/jquery.tweet.js')}}
-{{HTML::script(dirTemaToko().'shoppest/assets/js/custom.js')}}
+{{--HTML::script(dirTemaToko().'shoppest/assets/js/lib/jquery-1.9.1.min.js')--}}
+{{--HTML::script(dirTemaToko().'shoppest/assets/js/lib/jquery-ui-1.10.2.min.js')--}}
+{{--HTML::script(dirTemaToko().'shoppest/assets/js/lib/bootstrap.min.js')--}}
+{{--HTML::script(dirTemaToko().'shoppest/assets/js/lib/jquery.cookie.js')--}}
+{{--HTML::script(dirTemaToko().'shoppest/assets/js/fancybox/jquery.fancybox.js')--}}
+{{--HTML::script(dirTemaToko().'shoppest/assets/js/lib/jquery.tweet.js')--}}
+{{--HTML::script(dirTemaToko().'shoppest/assets/js/lib/custom.js')--}}
+
+<script data-main="http://{{Request::server('SERVER_NAME').'/'.dirTemaToko()}}shoppest/assets/js/app-main" src="/js/require.js"></script>
 
 <!--[if lt IE 9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>

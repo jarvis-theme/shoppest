@@ -13,7 +13,7 @@
         <h3>Account</h3>
       </div><!--end titleHeader-->
       <ul class="unstyled my-account">
-        @if ( ! Sentry::check())
+        @if ( ! is_login() )
         <li><a class="invarseColor" href="{{URL::to('member')}}"><i class="icon-caret-right"></i> Login </a></li>
         <li><a class="invarseColor" href="{{URL::to('member/create')}}"><i class="icon-caret-right"></i> Register</a></li>
         @endif
@@ -43,7 +43,7 @@
 
 
 <div class="span4">
-  @if ( ! Sentry::check())
+  @if ( ! is_login() )
     <div class="titleHeader clearfix">
       <h3>New Customer</h3>
     </div><!--end titleHeader-->
@@ -59,8 +59,8 @@
       <h3>Banner</h3>
     </div><!--end titleHeader-->
     <div class="new-customer">
-      @foreach(getBanner(1) as $item)
-      <div><a href="{{URL::to($item->url)}}"><img src="{{URL::to(getPrefixDomain().'/galeri/'.$item->gambar)}}" /></a></div>
+      @foreach(vertical_banner() as $item)
+      <div><a href="{{URL::to($item->url)}}">{{HTML::image(banner_image_url($item->gambar))}}</a></div>
       @endforeach
     </div><!--end:side--> 
   @endif

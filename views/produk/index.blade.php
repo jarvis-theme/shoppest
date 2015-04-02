@@ -39,8 +39,12 @@
 						<div class="titleHeader clearfix">
 							<h3>Banner</h3>
 						</div><!--end titleHeader-->
-						@foreach(getBanner(1) as $item)
-							<div><a href="{{URL::to($item->url)}}"><img src="{{URL::to(getPrefixDomain().'/galeri/'.$item->gambar)}}" /></a></div>
+						@foreach(vertical_banner() as $item)
+							<div>
+								<a href="{{URL::to($item->url)}}">
+									{{HTML::image(banner_image_url($item->gambar))}}
+								</a>
+							</div>
 						@endforeach
 					</div>
 				</aside><!--end aside-->
@@ -49,17 +53,25 @@
 					<div id="productSlider" class="carousel slide">
 						<!-- Carousel items -->
 						<div class="carousel-inner">
-						@foreach(getBanner(2) as $key => $item)
+						@foreach(horizontal_banner() as $key => $item)
 							@if($key==0)
-								<div class="active item"><a href="{{URL::to($item->url)}}"><img src="{{URL::to(getPrefixDomain().'/galeri/'.$item->gambar)}}" /></a></div>
+								<div class="active item">
+									<a href="{{URL::to($item->url)}}">
+										{{HTML::image(banner_image_url($item->gambar))}}
+									</a>
+								</div>
 							@else
-								<div class="item"><a href="{{URL::to($item->url)}}"><img src="{{URL::to(getPrefixDomain().'/galeri/'.$item->gambar)}}" /></a></div>
+								<div class="item">
+									<a href="{{URL::to($item->url)}}">
+										{{HTML::image(banner_image_url($item->gambar))}}
+									</a>
+								</div>
 							@endif
 						@endforeach
 						</div>
 					</div><!--end productSlider-->
 
-					<div class="productFilter clearfix">                      
+					<div class="productFilter clearfix">
 						<div class="showItem inline pull-left">
 							Show
 							<select id="show" data-rel="{{URL::current()}}">
@@ -83,13 +95,15 @@
 						@if($view=='' || $view=='grid')
 							@foreach($produk as $myproduk)
 							<li class="span3 clearfix">
-								<div class="thumbnail">
-									<a href="{{slugProduk($myproduk)}}">{{HTML::image(getPrefixDomain().'/produk/'.$myproduk->gambar1, $myproduk->nama, array('class="img1"'))}}</a>
+								<div class="thumbnail" style="min-height:210px">
+									<a href="{{slugProduk($myproduk)}}">
+										{{HTML::image(product_image_url($myproduk->gambar1), $myproduk->nama, array('class'=>'img1'))}}
+									</a>
 								</div>
 								<div class="thumbSetting">
-									<div class="thumbTitle">
+									<div class="thumbTitle" style="height:54px">
 										<h3>
-											<a href="{{slugProduk($myproduk)}}" class="invarseColor">{{$myproduk->nama}}</a>
+											<a href="{{slugProduk($myproduk)}}" class="invarseColor">{{shortDescription($myproduk->nama,43)}}</a>
 											@if(is_terlaris($myproduk))
 											<span class="label label-success">Terlaris</span>
 											@endif
@@ -106,13 +120,16 @@
 										   {{shortDescription($myproduk->deskripsi,100)}}
 										</p>
 									</div>
-									<div class="thumbPrice">
+									<div class="thumbPrice" style="height:43px">
+										@if($myproduk->hargaCoret != 0)
 										<span>
-											@if($myproduk->hargaCoret != 0)
 											<span class="strike-through">{{jadiRupiah($myproduk->hargaCoret)}}</span>
-											@endif
+											<br>
 											{{jadiRupiah($myproduk->hargaJual)}}
 										</span>
+										@else
+										<span style="line-height:45px">{{jadiRupiah($myproduk->hargaJual)}}</span>			
+										@endif
 									</div>
 
 									<div class="thumbButtons">
@@ -127,8 +144,10 @@
 							@foreach($produk as $myproduk)
 							<li class="clearfix">
 								<div class="span3">
-									<div class="thumbnail">
-										<a href="{{slugProduk($myproduk)}}">{{HTML::image(getPrefixDomain().'/produk/'.$myproduk->gambar1, $myproduk->nama, array('class="img1"'))}}</a>
+									<div class="thumbnail" style="min-height:210px">
+										<a href="{{slugProduk($myproduk)}}">
+											{{HTML::image(product_image_url($myproduk->gambar1), $myproduk->nama, array('class'=>'img1'))}}
+										</a>
 									</div>
 								</div>
 								<div class="span6">

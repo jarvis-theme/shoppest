@@ -35,15 +35,15 @@
 										<span>{{ jadiRUpiah($produk->hargaJual) }}</span>
 									</div><!--end product-price-->
 									<div class="product-info">
-										<dl class="dl-horizontal">
-											<p>{{$produk->deskripsi}}</p>
-										</dl>
-									</div><!--end product-info-->
-									<div class="product-info">
 										<iframe src="//www.facebook.com/plugins/share_button.php?href={{URL::to(slugProduk($produk))}}&amp;layout=button" scrolling="no" frameborder="0" style="border:none; overflow:hidden;height:20px;width:65px;" allowTransparency="true"></iframe>
 										<a class="twitter-share-button" href="https://twitter.com/share" data-count="none">Tweet </a>
 										<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 									</div><!--end product-inputs-->
+									<div class="product-info">
+										<dl class="dl-horizontal">
+											<p>{{$produk->deskripsi}}</p>
+										</dl>
+									</div><!--end product-info-->
 									<div class="product-inputs">
 										<form action="#" id='addorder'>
 											<div class="controls-row">
@@ -90,7 +90,10 @@
 									<div class="thumbSetting">
 										<div class="thumbTitle">
 											<h3>
-											<a href="{{slugProduk($myproduk)}}" class="invarseColor">{{$myproduk->nama}}</a>
+												<a href="{{slugProduk($myproduk)}}" class="invarseColor">{{$myproduk->nama}}</a>
+												@if(is_outstok($myproduk))
+												<span class="label label-success">Kosong</span>
+												@endif
 											</h3>
 										</div>
 										<!-- <ul class="rating clearfix">
@@ -104,10 +107,16 @@
 											<p>{{shortDescription($myproduk->deskripsi,100)}}</p>
 										</div>
 										<div class="thumbPrice">
-										@if($myproduk->hargaCoret != 0)
-											<span class="strike-through">{{jadiRupiah($myproduk->hargaCoret,true)}}</span>
-										@endif
-											<span>{{jadiRupiah($myproduk->hargaJual)}}</span>
+											@if($myproduk->hargaCoret != 0)
+                                            <span>
+                                                <span class="strike-through">{{jadiRupiah($myproduk->hargaCoret)}}</span>
+                                                <br>
+                                                {{jadiRupiah($myproduk->hargaJual)}}
+                                            </span>
+
+                                            @else
+                                            <span style="line-height:45px">{{jadiRupiah($myproduk->hargaJual)}}</span>
+                                            @endif
 										</div>
 
 										<div class="thumbButtons">

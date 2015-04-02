@@ -5,8 +5,8 @@
             <!-- Carousel items -->
             <div class="carousel-inner">
                 <div class="active item"><img src="{{URL::to(getPrefixDomain().'/galeri/banner-width1.jpg')}}" alt="slide1"></div>
-                <div class="item"><img src="{{URL::to(getPrefixDomain().'/galeri/banner-width2.jpg')}}" alt="slide1"></div>
-                <div class="item"><img src="{{URL::to(getPrefixDomain().'/galeri/banner-width3.jpg')}}" alt="slide1"></div>
+                <div class="item"><img src="{{URL::to(getPrefixDomain().'/galeri/banner-width2.jpg')}}" alt="slide2"></div>
+                <div class="item"><img src="{{URL::to(getPrefixDomain().'/galeri/banner-width3.jpg')}}" alt="slide3"></div>
             </div><!--end carousel-inner-->
 
             <!-- Carousel nav -->

@@ -114,7 +114,7 @@ Kami menemukan error berikut:
               <hr>
 
               <div class="control-group">
-                  <label class="control-label" for="inputSecondAdd">Captcha:</label>
+                  <label class="control-label" for="inputSecondAdd">Captcha: <span class="text-error">*</span></label>
                   <div class="controls">
                     {{ HTML::image(Captcha::img(), 'Captcha image') }}
                     {{Form::text('captcha')}}

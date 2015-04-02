@@ -1,40 +1,45 @@
-<div class="container">
-
+        <div class="container">
             <div class="row">
 
                 @if($jumlahCari!=0)
-                   
                     <div class="span12">
 
                         <div class="titleHeader clearfix">
                             <h3>Search Result</h3>
                         </div><!--end titleHeader-->
 
-
                         <div class="row">
                             <ul class="hProductItems clearfix">
 
                                 @foreach($hasilpro as $myproduk)
                                 <li class="span3 clearfix">
-                                    <div class="thumbnail">
-                                        <a href="">{{HTML::image(getPrefixDomain().'/produk/'.$myproduk->gambar1, $myproduk->nama, array('class="img1"'))}}</a>
+                                    <div class="thumbnail" style="min-height:210px">
+                                        <a href="">
+                                            {{HTML::image(product_image_url($myproduk->gambar1), $myproduk->nama, array('class'=>'img1'))}}
+                                        </a>
                                     </div>
                                     <div class="thumbSetting">
                                         <div class="thumbTitle">
                                             <h3>
-                                            <a href="#" class="invarseColor">{{$myproduk->nama}}</a>
+                                            <a href="#" class="invarseColor">{{shortDescription($myproduk->nama,25)}}</a>
                                             </h3>
                                         </div>
                                         <div class="product-desc">
                                             <p>
-                                                Praesent ac condimentum felis. Nulla at nisl orci, at dignissim dolor...
+                                                {{shortDescription($myproduk->deskripsi,100)}}
                                             </p>
                                         </div>
-                                        <div class="thumbPrice">
-                                        @if($myproduk->hargaCoret != 0)
-                                            <span class="strike-through">{{jadiRupiah($myproduk->hargaCoret, true)}}</span>
-                                        @endif
-                                            <span>{{jadiRupiah($myproduk->hargaJual)}}</span>
+                                        <div class="thumbPrice" style="height:43px">
+                                            @if($myproduk->hargaCoret != 0)
+                                            <span>
+                                                <span class="strike-through">{{jadiRupiah($myproduk->hargaCoret)}}</span>
+                                                <br>
+                                                {{jadiRupiah($myproduk->hargaJual)}}
+                                            </span>
+
+                                            @else
+                                            <span style="line-height:45px">{{jadiRupiah($myproduk->hargaJual)}}</span>
+                                            @endif
                                         </div>
 
                                         <div class="thumbButtons">
@@ -56,7 +61,6 @@
                         </div><!--end pagination-->
 
                     </div><!--end span12-->
-                    
                     
                 @else
 
@@ -85,14 +89,7 @@
                         </div><!--end search-->
                     </div><!--end span3-->
 
-                @endif
-
-                
-
-
-                
+                @endif              
 
             </div><!--end row-->
-
         </div><!--end conatiner-->
-

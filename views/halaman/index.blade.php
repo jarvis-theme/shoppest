@@ -20,15 +20,18 @@
                 </div><!--end blog-content-->
             </article><!--end article-->
 
-
         </div><!--end span9-->
 
 
         <aside class="span3">
 
             <div class="blog-search">
-                @foreach(getBanner(1) as $item)
-                <div><a href="{{URL::to($item->url)}}"><img src="{{URL::to(getPrefixDomain().'/galeri/'.$item->gambar)}}" /></a></div>
+                @foreach(vertical_banner() as $item)
+                <div>
+                    <a href="{{URL::to($item->url)}}">
+                        {{HTML::image(banner_image_url($item->gambar))}}
+                    </a>
+                </div>
                 @endforeach
             </div><!--end blog-adds-->
 
