@@ -1,27 +1,20 @@
-<div class="container">
-
 			<!-- Checkout Page -->
 			<section class="order">
-
 				<div class="row standard">
-					
 					<br>
 					<header class="span12 prime">
-					<ul class="nav nav-pills" >
-					  <li><a href="{{URL::to('checkout')}}">Keranjang Belanja &rarr;</a></li>
-					  <li><a href="javascript:history.back()">Data Pengiriman &rarr;</a></li>
-					  <li class="active"><a href="#">Pembayaran &rarr;</a></li>
-					  <li><a href="#">Konfirmasi &rarr;</a></li>
-					  <li><a href="#">Selesai</a></li>
-					</ul>
+						<ul class="nav nav-pills" >
+							<li><a href="{{URL::to('checkout')}}">Keranjang Belanja &rarr;</a></li>
+							<li><a href="javascript:history.back()">Data Pengiriman &rarr;</a></li>
+							<li class="active"><a href="#">Pembayaran &rarr;</a></li>
+							<li><a href="#">Konfirmasi &rarr;</a></li>
+							<li><a href="#">Selesai</a></li>
+						</ul>
 					</header>
 					<header class="span12 prime">
 						<h3>Pembayaran</h3>
 					</header>
-
-
 				</div>
-
 
 				<div class="row cart">
 					<form class="form-horizontal" action="{{URL::to('konfirmasi')}}" name='pembayaran' method='post'>
@@ -76,6 +69,4 @@
 					</div>
 					</form>
 				</div>
-
 			</section>
-		</div>

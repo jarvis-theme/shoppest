@@ -1,31 +1,24 @@
-<div class="container">
 			@if (Session::has('ekspedisiId'))
 				
 			@endif
 			<!-- Checkout Page -->
 			<section class="order">
-
 				<div class="row standard">
-					
 					<br>
 					<header class="span12 prime">
-					<ul class="nav nav-pills">
-					  <li class="active"><a href="#">Keranjang Belanja &rarr;</a></li>
-					  <li><a href="#">Data Pengiriman &rarr;</a></li>
-					  <li><a href="#">Pembayaran &rarr;</a></li>
-					  <li><a href="#">Konfirmasi &rarr;</a></li>
-					  <li><a href="#">Selesai</a></li>
-					</ul>
+						<ul class="nav nav-pills">
+							<li class="active"><a href="#">Keranjang Belanja &rarr;</a></li>
+							<li><a href="#">Data Pengiriman &rarr;</a></li>
+							<li><a href="#">Pembayaran &rarr;</a></li>
+							<li><a href="#">Konfirmasi &rarr;</a></li>
+							<li><a href="#">Selesai</a></li>
+						</ul>
 					</header>
-
 
 					<header class="span12 prime">
 						<h3>Keranjang Belanja</h3>
 					</header>
-
-
 				</div>
-
 
 				<div class="row cart">
 					<div class="span12">
@@ -134,31 +127,29 @@
 
 								</form>							
 								@endif																							
-
-								
-									@if ( !Sentry::check())
-										<div class="span5">
-											<h3>Pelanggan Baru</h3>
-											<button type="submit" class="btn theme"><i class="icon-check"></i> Lanjut ke data pengiriman </button>
+								@if ( !Sentry::check())
+									<div class="span5">
+										<h3>Pelanggan Baru</h3>
+										<button type="submit" class="btn theme"><i class="icon-check"></i> Lanjut ke data pengiriman </button>
+										</form>
+										<hr>
+										<small>Anda tidak perlu menjadi member untuk berbelanja. Silakan klik tombol "Lanjut ke data pengiriman" untuk melanjutkan. Untuk mempercepat proses belanja dimasa mendatang plus mendapatkan sejumlah tawaran menarik lainnya, anda dapat mendaftar menjadi member dihalaman <a href="#">pendafaran/registrasi</a>.</small>
+									</div>
+									<div class="span5">
+										<h3>Member/Mitra</h3>
+										<small>Silakan log in bagi Anda yang telah menjadi member/mitra</small>
+										<div class="tab-pane active" id="login">
+											<form class="form-horizontal" action="{{URL::to('member/login')}}" method="post">
+											  <input type="text" class="input-medium" placeholder="Email" name='email'>
+											  <input type="password" class="input-medium" placeholder="Password" name='password'>
+											  <br><br>
+											  <button type="submit" class="btn theme">Login Member</button>
 											</form>
-											<hr>
-											<small>Anda tidak perlu menjadi member untuk berbelanja. Silakan klik tombol "Lanjut ke data pengiriman" untuk melanjutkan. Untuk mempercepat proses belanja dimasa mendatang plus mendapatkan sejumlah tawaran menarik lainnya, anda dapat mendaftar menjadi member dihalaman <a href="#">pendafaran/registrasi</a>.</small>
-										</div>
-										<div class="span5">
-											<h3>Member/Mitra</h3>
-											<small>Silakan log in bagi Anda yang telah menjadi member/mitra</small>
-											<div class="tab-pane active" id="login">
-												<form class="form-horizontal" action="{{URL::to('member/login')}}" method="post">
-												  <input type="text" class="input-medium" placeholder="Email" name='email'>
-												  <input type="password" class="input-medium" placeholder="Password" name='password'>
-												  <br><br>
-												  <button type="submit" class="btn theme">Login Member</button>
-												</form>
-										  	</div>
-										  	<hr>
-										  	<small>Tertarik menjadi member/mitra? <a href="#">Daftar sekarang</a></small>
-										</div>
-									@endif
+									  	</div>
+									  	<hr>
+									  	<small>Tertarik menjadi member/mitra? <a href="#">Daftar sekarang</a></small>
+									</div>
+								@endif
 								
 							@else
 							<table class="table">
@@ -180,6 +171,4 @@
 						</div>
 					</div>
 				</div>
-
 			</section>
-		</div>

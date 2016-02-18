@@ -1,4 +1,4 @@
-define(['jquery','bootstrap','jquery_cookie','jquery_ui'], function($)
+define(['jquery','bootstrap','jquery_cookie'], function($)
 {
 	return new function()
 	{
@@ -9,10 +9,8 @@ define(['jquery','bootstrap','jquery_cookie','jquery_ui'], function($)
 			NavToSelect();
 			cartContent();
 			dropdownMainNav();
-			// recentTweets();
 			openSidePanel();
-			//changeBackgroundPattern();
-			rangePriceSlider();
+			// rangePriceSlider();
 		};
 
 		var topNavToSelect = function() {
@@ -50,7 +48,7 @@ define(['jquery','bootstrap','jquery_cookie','jquery_ui'], function($)
 			$('<option />', {
 				'selected': 'selected',
 				'value' : '',
-				'text': 'Choise Page...'
+				'text': '-- Menu --'
 			}).appendTo('.navbar select');
 
 			$('.navbar ul.nav li a').each(function(){
@@ -67,23 +65,7 @@ define(['jquery','bootstrap','jquery_cookie','jquery_ui'], function($)
 				window.location = $(this).find('option:selected').val();
 			});
 		};
-
-		//show your latest tweets
-		var recentTweets = function() {
-		    $(".tweet").tweet({
-		        username: "seaofclouds",
-		        join_text: "auto",
-		        avatar_size: 0,
-		        count: 2,
-		        auto_join_text_default: "we said,", 
-		        auto_join_text_ed: "we",
-		        auto_join_text_ing: "we were",
-		        auto_join_text_reply: "we replied to",
-		        auto_join_text_url: "we were checking out",
-		        loading_text: "loading tweets..."
-		    });
-		};
-
+		
 		// stop escaping on clickin on downdown
 		var cartContent = function() {
 			var $cartContent = $('.cart-content');
@@ -91,7 +73,7 @@ define(['jquery','bootstrap','jquery_cookie','jquery_ui'], function($)
 			$cartContent.find('table').click(function(e){
 				e.stopPropagation();
 			});
-		};		
+		};
 
 		// dropdown mainnav
 		var dropdownMainNav = function() {
@@ -135,40 +117,20 @@ define(['jquery','bootstrap','jquery_cookie','jquery_ui'], function($)
 			});
 		};
 
-		// change background pattern
-		var changeBackgroundPattern = function() {
-			// cookie vars
-			var cookie_name1 = "site_pattern";
-			var cookie_options1 = { path: '/', expires: 30 };
-			var get_cookie1 = $.cookie('site_pattern');
-			if(get_cookie1 == null){get_cookie1 = 'bgnoise_lg'}
-
-			// backgrounds
-			$('head').append('<link rel="stylesheet" id="active-bg" href="css/backgrounds/'+get_cookie1+'.css">');
-
-			$(".switcher > .switcher-content > .pattern-switch").find('a').bind('click', function(e) {
-				$('#active-bg').remove();
-				e.preventDefault();
-				var bgName = $(this).text();
-				$.cookie(cookie_name1, bgName, cookie_options1);
-				$('head').append('<link rel="stylesheet" id="active-bg" href="css/backgrounds/'+bgName+'.css">');
-			});
-		};
-
 		// range price product
 		var rangePriceSlider = function() {
 			var $slideRange = $("#slider-range"), amount = $( "#amount" );
 
 			$slideRange.slider({
-		      range: true,
-		      min: 0,
-		      max: 500,
-		      values: [ 75, 300 ],
-		      slide: function( event, ui ) {
-		        amount.val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-		      }
-		    });
-		    amount.val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + $slideRange.slider( "values", 1 ) );
+			  range: true,
+			  min: 0,
+			  max: 500,
+			  values: [ 75, 300 ],
+			  slide: function( event, ui ) {
+				amount.val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+			  }
+			});
+			amount.val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + $slideRange.slider( "values", 1 ) );
 		};
 	};
 });

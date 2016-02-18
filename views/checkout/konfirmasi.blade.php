@@ -1,31 +1,23 @@
-<div class="clear"></div>
-
-<div class="container">
+			<div class="clear"></div>
 
 			<!-- Checkout Page -->
 			<section class="order">
-
 				<div class="row standard">
-					
 					<br>
 					<header class="span12 prime">
-					<ul class="nav nav-pills">
-					  <li><a href="{{URL::to('checkout')}}">Keranjang Belanja &rarr;</a></li>
-					  <li><a href="javascript:history.go(-2)">Data Pengiriman &rarr;</a></li>
-					  <li><a href="javascript:history.go(-1)">Pembayaran &rarr;</a></li>
-					  <li class="active"><a href="#">Konfirmasi &rarr;</a></li>
-					  <li><a href="#">Selesai</a></li>
-					</ul>
+						<ul class="nav nav-pills">
+							<li><a href="{{URL::to('checkout')}}">Keranjang Belanja &rarr;</a></li>
+							<li><a href="javascript:history.go(-2)">Data Pengiriman &rarr;</a></li>
+							<li><a href="javascript:history.go(-1)">Pembayaran &rarr;</a></li>
+							<li class="active"><a href="#">Konfirmasi &rarr;</a></li>
+							<li><a href="#">Selesai</a></li>
+						</ul>
 					</header>
-
 
 					<header class="span12 prime">
 						<h3>Konfirmasi Pesanan Anda</h3>
 					</header>
-
-
 				</div>
-
 
 				<div class="row">
 					<div class="span12">
@@ -53,7 +45,6 @@
 											<td><strong>{{jadiRupiah($item['qty'] * $item['price'])}}</strong></td>
 										</tr>
 										@endforeach
-										
 										
 										<tr>
 											<td colspan="3">
@@ -88,7 +79,6 @@
 									</tbody>
 								</table>
 								<div class="line"></div><br>
-								
 							</form>
 						</div>
 					</div>
@@ -173,7 +163,6 @@
 					</header>
 				</div>
 				
-
 				<div class="row">
 					<div class="span6">
 						@if($datapembayaran['pembayaran']=='bank')
@@ -186,11 +175,8 @@
 							Via Credit Card
 						@endif
 					</div>
-					
 				</div>
 				<hr>
 				{{Form::open(array('url'=>'finish','method'=>'post'))}}
 				<button type="submit" class="btn theme"><i class="icon-check"></i> Selesaikan Pemesanan</button>
-
 			</section>
-		</div>

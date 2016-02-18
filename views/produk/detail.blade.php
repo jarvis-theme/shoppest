@@ -1,5 +1,5 @@
 		<div class="container">
-			<div class="row">		
+			<div class="row">
 				<div class="span12">
 					<div class="row">
 						<div class="product-details clearfix">
@@ -7,37 +7,41 @@
 								<div class="product-title">
 									<h1>{{$produk->nama}}</h1>
 								</div>
-
+								<div class="product-img-floated">
+									<a class="fancybox" href="{{product_image_url($produk->gambar1,'large')}}" title="{{$produk->nama}}">
+										<img src="{{product_image_url($produk->gambar1,'medium')}}" alt="{{$produk->nama}}">
+									</a>
+								</div><!--end product-img-->
 								<div class="product-img-thumb-floated">
-									@if($produk->gambar1!='')
-									<a class="fancybox" href="{{URL::to(getPrefixDomain().'/produk/'.$produk->gambar1)}}"><img src="{{URL::to(getPrefixDomain().'/produk/thumb/'.$produk->gambar1)}}" alt=""></a>
-									@endif
 									@if($produk->gambar2!='')
-									<a class="fancybox" href="{{URL::to(getPrefixDomain().'/produk/'.$produk->gambar2)}}"><img src="{{URL::to(getPrefixDomain().'/produk/thumb/'.$produk->gambar2)}}" alt=""></a>
+									<a class="fancybox" href="{{product_image_url($produk->gambar2,'large')}}" title="{{$produk->nama}}">
+										<img src="{{product_image_url($produk->gambar2,'thumb')}}" alt="thumbnail 1">
+									</a>
 									@endif
 									@if($produk->gambar3!='')
-									<a class="fancybox" href="{{URL::to(getPrefixDomain().'/produk/'.$produk->gambar3)}}"><img src="{{URL::to(getPrefixDomain().'/produk/thumb/'.$produk->gambar3)}}" alt=""></a>
+									<a class="fancybox" href="{{product_image_url($produk->gambar3,'large')}}" title="{{$produk->nama}}">
+										<img src="{{product_image_url($produk->gambar3,'thumb')}}" alt="thumbnail 2">
+									</a>
+									@endif
+									@if($produk->gambar4!='')
+									<a class="fancybox" href="{{product_image_url($produk->gambar4,'large')}}" title="{{$produk->nama}}">
+										<img src="{{product_image_url($produk->gambar4,'thumb')}}" alt="thumbnail 3">
+									</a>
 									@endif
 								</div><!--product-img-thumb-->
-
-								<div class="product-img-floated">
-									<a class="fancybox" href="{{URL::to(getPrefixDomain().'/produk/'.$produk->gambar1)}}"><img style="max-width: 80%;" src="{{URL::to(getPrefixDomain().'/produk/'.$produk->gambar1)}}" alt=""></a>
-								</div><!--end product-img-->
-								
+								<div class="clearfix"></div>
 							</div><!--end span6-->
 
 							<div class="span6">
 								<div class="product-set">
 									<div class="product-price">
-									@if($produk->hargaCoret != 0)
-										<span class="strike-through">{{ jadiRUpiah($produk->hargaCoret) }}</span>
-									@endif
-										<span>{{ jadiRUpiah($produk->hargaJual) }}</span>
+										@if($produk->hargaCoret != 0)
+										<span class="strike-through">{{ price($produk->hargaCoret) }}</span>
+										@endif
+										<span>{{ price($produk->hargaJual) }}</span>
 									</div><!--end product-price-->
 									<div class="product-info">
-										<iframe src="//www.facebook.com/plugins/share_button.php?href={{URL::to(slugProduk($produk))}}&amp;layout=button" scrolling="no" frameborder="0" style="border:none; overflow:hidden;height:20px;width:65px;" allowTransparency="true"></iframe>
-										<a class="twitter-share-button" href="https://twitter.com/share" data-count="none">Tweet </a>
-										<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+										{{ sosialShare(product_url($produk)) }}
 									</div><!--end product-inputs-->
 									<div class="product-info">
 										<dl class="dl-horizontal">
@@ -45,25 +49,24 @@
 										</dl>
 									</div><!--end product-info-->
 									<div class="product-inputs">
-										<form action="#" id='addorder'>
+										<form action="#" id="addorder">
 											<div class="controls-row">
-												@if($opsiproduk->count()>0)                 
-													<select class="span3" name="opsiproduk">
-															<option value="">-- Pilih Opsi --</option>
-															@foreach ($opsiproduk as $key => $opsi)
-															<option value="{{$opsi->id}}" {{ $opsi->stok==0 ? 'disabled':''}} >					
-																{{$opsi->opsi1.($opsi->opsi2=='' ? '':' / '.$opsi->opsi2).($opsi->opsi3=='' ? '':' / '.$opsi->opsi3)}} {{jadiRupiah($opsi->harga)}}	
-															</option>
-															@endforeach
-													</select>
-													</p>
-												@endif    												
+												@if($opsiproduk->count()>0)
+												<select class="span3" name="opsiproduk">
+													<option value="">-- Pilih Opsi --</option>
+													@foreach ($opsiproduk as $key => $opsi)
+													<option value="{{$opsi->id}}" {{ $opsi->stok==0 ? 'disabled':''}} >
+														{{$opsi->opsi1.($opsi->opsi2=='' ? '':' / '.$opsi->opsi2).($opsi->opsi3=='' ? '':' / '.$opsi->opsi3)}} {{price($opsi->harga)}}
+													</option>
+													@endforeach
+												</select>
+												@endif
 											</div><!--end controls-row-->
 
 											<div class="input-append">
-												<input class="span2" type="text" name='qty' value="1" placeholder="QTY...">
-												<button class="btn btn-primary add_cart"><i class="icon-shopping-cart"></i> Masukan Keranjang</button>
-											</div>											
+												<input class="span2" type="text" name="qty" value="1" placeholder="Jumlah">
+												<button class="btn btn-primary add_cart"><i class="icon-shopping-cart"></i> &nbsp;Beli</button>
+											</div>
 										</form><!--end form-->
 									</div><!--end product-inputs-->
 									<div class="product-info">
@@ -73,7 +76,7 @@
 							</div><!--end span6-->
 						</div><!--end product-details-->
 					</div><!--end row-->
-
+					@if(count(other_product($produk)) > 0)
 					<div class="related-product">
 						<div class="titleHeader clearfix">
 							<h3>Related Product</h3>
@@ -81,18 +84,17 @@
 
 						<div class="row">
 							<ul class="hProductItems clearfix">
-
-								@foreach($produklain as $myproduk)
+								@foreach(other_product($produk) as $myproduk)
 								<li class="span3 clearfix">
-									<div class="thumbnail">
-										<a href="{{slugProduk($myproduk)}}">{{HTML::image(getPrefixDomain().'/produk/'.$myproduk->gambar1, $myproduk->nama, array('style' => ''))}}</a>
+									<div class="thumbnail imagepro">
+										<a href="{{product_url($myproduk)}}">{{HTML::image(product_image_url($myproduk->gambar1,'medium'), $myproduk->nama)}}</a>
 									</div>
 									<div class="thumbSetting">
 										<div class="thumbTitle">
 											<h3>
-												<a href="{{slugProduk($myproduk)}}" class="invarseColor">{{$myproduk->nama}}</a>
+												<a href="{{product_url($myproduk)}}" class="invarseColor">{{short_description($myproduk->nama,20)}}</a>
 												@if(is_outstok($myproduk))
-												<span class="label label-success">Kosong</span>
+												<span class="label label-default">Kosong</span>
 												@endif
 											</h3>
 										</div>
@@ -108,28 +110,29 @@
 										</div>
 										<div class="thumbPrice">
 											@if($myproduk->hargaCoret != 0)
-                                            <span>
-                                                <span class="strike-through">{{jadiRupiah($myproduk->hargaCoret)}}</span>
-                                                <br>
-                                                {{jadiRupiah($myproduk->hargaJual)}}
-                                            </span>
+											<span>
+												<span class="strike-through">{{price($myproduk->hargaCoret)}}</span>
+												<br>
+												{{price($myproduk->hargaJual)}}
+											</span>
 
-                                            @else
-                                            <span style="line-height:45px">{{jadiRupiah($myproduk->hargaJual)}}</span>
-                                            @endif
+											@else
+											<span class="pricepro">{{price($myproduk->hargaJual)}}</span>
+											@endif
 										</div>
 
 										<div class="thumbButtons">
-											<button onclick="window.location.href='{{URL::to('produk/'.$myproduk->slug)}}'" class="btn btn-primary btn-small btn-block">
+											<button onclick="window.location.href='{{product_url($myproduk)}}'" class="btn btn-primary btn-small btn-block">
 												Lihat Produk
 											</button>
 										</div>
 									</div>
 								</li>
-								@endforeach	
+								@endforeach
 							</ul>
 						</div><!--end row-->
 					</div><!--end related-product-->
+					@endif
 				</div><!--end span12-->
 			</div><!--end row-->
 		</div><!--end conatiner-->

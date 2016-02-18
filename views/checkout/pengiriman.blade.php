@@ -1,34 +1,25 @@
-<div class="container">
-
 			<!-- Checkout Page -->
 			<section class="order">
-
 				<div class="row standard">
-					
 					<br>
 					<header class="span12 prime">
-					<ul class="nav nav-pills">
-					  <li><a href="{{URL::to('checkout')}}">Keranjang Belanja &rarr;</a></li>
-					  <li class="active"><a href="#">Data Pengiriman &rarr;</a></li>
-					  <li><a href="#">Pembayaran &rarr;</a></li>
-					  <li><a href="#">Konfirmasi &rarr;</a></li>
-					  <li><a href="#">Selesai</a></li>
-					</ul>
+						<ul class="nav nav-pills">
+							<li><a href="{{URL::to('checkout')}}">Keranjang Belanja &rarr;</a></li>
+							<li class="active"><a href="#">Data Pengiriman &rarr;</a></li>
+							<li><a href="#">Pembayaran &rarr;</a></li>
+							<li><a href="#">Konfirmasi &rarr;</a></li>
+							<li><a href="#">Selesai</a></li>
+						</ul>
 					</header>
-
 
 					<header class="span12 prime">
 						<h3>Data Pengiriman</h3>
 					</header>
-
-
 				</div>
-
 
 				<div class="row cart">
 					<div class="span12">
 						<form class="form-horizontal" action="{{URL::to('pembayaran')}}" name='pengiriman' method='post'>
-
 							<div class="control-group">
 							<label class="control-label" for="inputEmail" > Nama</label>
 							<div class="controls">
@@ -121,8 +112,6 @@
 							</div>
 							</div>
 
-
-							
 							<div class="control-group">
 							<div class="controls">
 							  <button type="submit" class="btn theme"><i class="icon-check"></i> Lanjut ke Pembayaran</button>
@@ -131,9 +120,7 @@
 						</form>
 					</div>
 				</div>
-
 			</section>
-		</div>
 @if(Session::has('message'))
 <div class="{{Session::get('message')}}" id='message' style='display:none'>
 	<p>{{Session::get('text')}}</p>					

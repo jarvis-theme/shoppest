@@ -1,10 +1,6 @@
-<div class="container">
-
 			<!-- Checkout Page -->
 			<section class="order">
-
 				<div class="row standard">
-					
 					<br>
 					<header class="span12 prime">
 					<ul class="nav nav-pills">
@@ -19,7 +15,6 @@
 						<h3>Pemesanan Berhasil</h3>
 					</header>
 				</div>
-
 
 				<div class="row">
 					<div class="span12">
@@ -73,4 +68,3 @@
 					@endif										
 				</div>
 			</section>
-		</div>

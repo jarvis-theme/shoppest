@@ -8,14 +8,13 @@
     <body>
         <div id="wrapper">
             {{ Theme::partial('header') }}
-            {{ Theme::place('content') }}
+            <div class="container">
+                {{ Theme::place('content') }}
+            </div>
             {{ Theme::partial('footer') }}
-        </div>  
+        </div>
         
         {{ Theme::partial('defaultjs') }}
-        {{-- Theme::asset()->scripts() --}}
-        {{-- Theme::asset()->container('footer')->scripts() --}}
         {{ Theme::partial('analytic') }}
-        
     </body>
 </html>
