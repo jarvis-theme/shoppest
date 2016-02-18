@@ -44,6 +44,9 @@
 		</div><!--end span9-->
 
 		<aside class="span3">
+			<div class="special powerup">
+				{{pluginSidePowerup()}}
+			</div>
 			<div class="blog-search">
 				@foreach(vertical_banner() as $item)
 				<div class="banners">

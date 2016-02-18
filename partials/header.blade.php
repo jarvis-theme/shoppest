@@ -42,7 +42,7 @@
 			<div class="pull-right">
 				<form method="post" action="{{URL::to('search')}}" class="siteSearch">
 					<div class="input-append">
-						<input type="text" name="search" class="span2" id="appendedInputButton" placeholder="Search...">
+						<input type="text" name="search" class="span2" id="appendedInputButton" placeholder="Search..." required>
 						<button class="btn" type="submit" ><i class="icon-search"></i></button>
 					</div>
 				</form><!--end form-->

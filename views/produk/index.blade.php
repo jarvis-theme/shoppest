@@ -11,6 +11,9 @@
 						</ul>
 					</div><!--end categories-->
 					@endif
+					<div class="special powerup">
+						{{pluginSidePowerup()}}
+					</div>
 					<!-- <div class="special">
 						<div class="titleHeader clearfix">
 							<h3>Special</h3>

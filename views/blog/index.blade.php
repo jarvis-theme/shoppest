@@ -61,11 +61,14 @@
 					</div><!--end titleHeader-->
 					<ul class="unstyled">
 						@foreach(list_blog_category() as $key=>$value)
-						<li><a class="invarseColor" href="{{blog_category_url($value)}}"><i class="icon-caret-right"></i>{{$value->nama}}</a></li>
+						<li><a class="invarseColor" href="{{blog_category_url($value)}}"><i class="icon-caret-right"></i>&nbsp;{{$value->nama}}</a></li>
 						@endforeach
 					</ul>
 				</div><!--end blog-category-->
 				@endif
+				<div class="special powerup">
+					{{pluginSidePowerup()}}
+				</div>
 				@if(count(vertical_banner()) > 0)
 				<div class="blog-adds">
 					@foreach(vertical_banner() as $item)
