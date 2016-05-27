@@ -71,7 +71,7 @@
 
 							<div class="well well-small">
 								<form method="post" action="{{URL::to('search')}}" class="form-inline">
-									<input name="search" type="text" class="span3" placeholder="Type Search Term...">
+									<input name="search" type="text" class="span3" placeholder="Type Search..." required>
 									&nbsp;&nbsp;
 									
 									<button type="submit" class="btn btn-primary"><i class="icon-search"></i></button>

@@ -38,9 +38,9 @@
 
 				<div class="new-customer">
 					<p>
-					By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.
+						By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.
 					</p>
-				<a href="{{URL::to('member/create')}}" class="btn">Create Account</a>
+					<a href="{{URL::to('member/create')}}" class="btn">Create Account</a>
 				</div>
 			@else
 				<div class="titleHeader clearfix">

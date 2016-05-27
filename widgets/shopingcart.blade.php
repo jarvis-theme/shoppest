@@ -10,9 +10,9 @@
 				@foreach (Shpcart::cart()->contents() as $key => $cart)
 				<tr>
 					<td class="cart-product-info">
-						<a href="{{url('produk/'.Str::slug($cart['name']))}}"><img src="{{product_image_url($cart['image'],'thumb')}}" alt="{{ $cart['name'] }}"></a>
+						<a href="#"><img src="{{product_image_url($cart['image'],'thumb')}}" alt="{{ $cart['name'] }}"></a>
 						<div class="cart-product-desc">
-							<p><a class="invarseColor" href="{{url('produk/'.Str::slug($cart['name']))}}">{{$cart['name']}}</a></p>
+							<p><a class="invarseColor" href="#">{{$cart['name']}}</a></p>
 							<!-- <ul class="unstyled">
 								<li>Available: Yes</li>
 								<li>Color: Black</li>

@@ -70,7 +70,7 @@
 										</form><!--end form-->
 									</div><!--end product-inputs-->
 									<div class="product-info">
-										{{pluginTrustklik()}}
+										{{ pluginComment(product_url($produk), @$produk) }} 
 									</div>
 								</div><!--end product-set-->
 							</div><!--end span6-->

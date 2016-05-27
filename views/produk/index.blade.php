@@ -12,7 +12,7 @@
 					</div><!--end categories-->
 					@endif
 					<div class="special powerup">
-						{{pluginSidePowerup()}}
+						{{pluginSidePowerup()}} 
 					</div>
 					<!-- <div class="special">
 						<div class="titleHeader clearfix">
@@ -44,7 +44,7 @@
 						@foreach(vertical_banner() as $item)
 						<div class="banners">
 							<a href="{{URL::to($item->url)}}">
-								{{HTML::image(banner_image_url($item->gambar),'Info Promo')}}
+								{{HTML::image(banner_image_url($item->gambar),'Info Promo')}} 
 							</a>
 						</div>
 						@endforeach
@@ -100,7 +100,7 @@
 								<li class="span3 clearfix">
 									<div class="thumbnail imagepro">
 										<a href="{{product_url($myproduk)}}">
-											{{HTML::image(product_image_url($myproduk->gambar1), $myproduk->nama, array('class'=>'img1'))}}
+											{{HTML::image(product_image_url($myproduk->gambar1,'medium'), $myproduk->nama, array('class'=>'img1'))}}
 										</a>
 									</div>
 									<div class="thumbSetting">
@@ -156,7 +156,7 @@
 									<div class="span3">
 										<div class="thumbnail imagepro">
 											<a href="{{product_url($myproduk)}}">
-												{{HTML::image(product_image_url($myproduk->gambar1), $myproduk->nama, array('class'=>'img1'))}}
+												{{HTML::image(product_image_url($myproduk->gambar1,'medium'), $myproduk->nama, array('class'=>'img1'))}}
 											</a>
 										</div>
 									</div>
